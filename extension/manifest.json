@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Clip Cutter",
+  "version": "0.1.0",
+  "description": "Create authorized video and audio clips using a local processing service.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Clip Cutter"
+  },
+  "permissions": ["downloads"],
+  "host_permissions": ["http://127.0.0.1:8765/*"]
+}

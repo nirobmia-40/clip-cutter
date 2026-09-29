@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clip Cutter</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-mark" aria-hidden="true">CC</div>
+        <div>
+          <p class="eyebrow">LOCAL MEDIA TOOL</p>
+          <h1>Clip Cutter</h1>
+        </div>
+        <span class="service-dot" title="Local service" aria-label="Local service"></span>
+      </header>
+
+      <form id="analyze-form" class="source-form">
+        <label for="source-url">Video or audio URL</label>
+        <div class="source-row">
+          <input id="source-url" name="url" type="url" placeholder="https://…" required>
+          <button class="analyze-button" type="submit">Analyze</button>
+        </div>
+      </form>
+
+      <p id="status" class="status" role="status" aria-live="polite">Connect to the local service to begin.</p>
+
+      <section id="editor" class="editor" hidden>
+        <div class="media-summary">
+          <span class="summary-label">SOURCE DURATION</span>
+          <strong id="duration-label">00:00</strong>
+          <span id="quality-summary" class="quality-summary"></span>
+        </div>
+
+        <section class="range-section" aria-labelledby="range-heading">
+          <div class="section-heading">
+            <h2 id="range-heading">Clip range</h2>
+            <button id="full-range" class="text-button" type="button">Full length</button>
+          </div>
+          <div class="range-inputs">
+            <label>Start <input id="start-time" type="text" value="00:00" inputmode="numeric" aria-label="Start time, minutes and seconds"></label>
+            <span class="range-dash" aria-hidden="true">to</span>
+            <label>End <input id="end-time" type="text" value="00:00" inputmode="numeric" aria-label="End time, minutes and seconds"></label>
+          </div>
+          <div class="timeline" aria-label="Clip start and end controls">
+            <input id="start-slider" type="range" min="0" max="0" value="0" aria-label="Clip start">
+            <input id="end-slider" type="range" min="0" max="0" value="0" aria-label="Clip end">
+          </div>
+          <div class="timeline-labels"><span>00:00</span><span id="timeline-end">00:00</span></div>
+        </section>
+
+        <section class="settings-section" aria-labelledby="output-heading">
+          <div class="section-heading"><h2 id="output-heading">Output</h2></div>
+          <div class="segmented" role="group" aria-label="Download type">
+            <button class="mode-button active" type="button" data-mode="video" aria-pressed="true">Video</button>
+            <button class="mode-button" type="button" data-mode="audio" aria-pressed="false">Audio</button>
+          </div>
+          <div class="option-row">
+            <label id="quality-field">Quality
+              <select id="quality-select"></select>
+            </label>
+            <label id="format-field">Format
+              <select id="format-select"></select>
+            </label>
+          </div>
+          <label class="save-location"><input id="save-location" type="checkbox" checked> Choose save location</label>
+        </section>
+
+        <button id="download-button" class="download-button" type="button" disabled>
+          <span aria-hidden="true">↓</span> Prepare download
+        </button>
+      </section>
+      <footer>Processing stays on this device</footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
